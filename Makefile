@@ -29,7 +29,7 @@ AS = m2-assembler
 LD = m2-loader
 
 OBJS = main.o io.o loop.o string.o
-OBJS += ping.o help.o
+OBJS += ping.o help.o beep.o poweroff.o
 
 all: build/$(PRG).ldm
 
@@ -59,6 +59,14 @@ build/help.o: src/help.c src/cmds.h src/return_codes.h src/string.h src/io.h
 build/string.o: src/string.c src/string.h
 	$(CC) $(CFLAGS) -o=build/string.asm src/string.c
 	$(AS) -o build/string.o build/string.asm
+
+build/beep.o: src/beep.c src/cmds.h src/return_codes.h src/io.h
+	$(CC) $(CFLAGS) -o=build/beep.asm src/beep.c
+	$(AS) -o build/beep.o build/beep.asm
+
+build/poweroff.o: src/poweroff.c src/cmds.h src/return_codes.h src/io.h
+	$(CC) $(CFLAGS) -o=build/poweroff.asm src/poweroff.c
+	$(AS) -o build/poweroff.o build/poweroff.asm
 
 .PHONY: clean emul load set_debug
 
