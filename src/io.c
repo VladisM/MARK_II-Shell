@@ -1,15 +1,24 @@
 #include "io.h"
 #include <uart.h>
+#include <vgaio.h>
+
+#ifndef DEBUG
+char text[2];
+#endif
 
 void send_char(char c){
 	while((USR0 & USR0_txcount) != 0);
 	UTDR0 = c;	
+	#ifndef DEBUG
+	text[0] = c;
+	vgaio_write_msg(text);
+	#endif	
 }
 
 void send_string(char *c){
 	for(int i = 0; c[i] != 0; i++){
 		send_char(c[i]);
-	}
+	}	
 }
 
 char get_char(){
@@ -19,5 +28,10 @@ char get_char(){
 	
 void io_init(){
 	UCR0 |= ( UCR0_txen | UCR0_rxen | (UCR0_N & 0xEF) );
+	#ifndef DEBUG
+	vgaio_clear();
+	vgaio_home();
+	text[1] = '\0';
+	#endif
 }
 	
