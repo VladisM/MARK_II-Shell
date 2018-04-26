@@ -1,8 +1,8 @@
 #include "loop.h"
-#include "io.h"
-#include "string.h"
-#include "cmds.h"
-#include "return_codes.h"
+#include "../interface/io.h"
+#include "../libs/string.h"
+#include "../cmds/cmds.h"
+#include "../libs/return_codes.h"
 
 #include <pwrmng.h>
 

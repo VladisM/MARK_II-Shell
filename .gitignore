@@ -1,6 +1,5 @@
-build/*
+build/
 sim/dev/*
 junk/*
 
-!build/.holder
 !sim/dev/.holder

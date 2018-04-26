@@ -1,6 +1,6 @@
 #include "cmds.h"
-#include "return_codes.h"
-#include "io.h"
+#include "../libs/return_codes.h"
+#include "../interface/io.h"
 
 int ping(int argc, char argv[][INBUF_LEN]){
 	send_string("pong!\n\r");

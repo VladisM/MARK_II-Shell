@@ -1,7 +1,7 @@
 #include "cmds.h"
-#include "return_codes.h"
-#include "string.h"
-#include "io.h"
+#include "../libs/return_codes.h"
+#include "../libs/string.h"
+#include "../interface/io.h"
 
 int help(int argc, char argv[][INBUF_LEN]){
 	

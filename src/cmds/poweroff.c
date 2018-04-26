@@ -1,6 +1,6 @@
 #include "cmds.h"
-#include "return_codes.h"
-#include "io.h"
+#include "../libs/return_codes.h"
+#include "../interface/io.h"
 
 #include <pwrmng.h>
 
