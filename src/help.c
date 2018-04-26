@@ -3,7 +3,7 @@
 #include "string.h"
 #include "io.h"
 
-int help(int argc, char argv[][33]){
+int help(int argc, char argv[][INBUF_LEN]){
 	
 	if(argc == 1){
 		send_string("MARK-II Shell\n\n\r");

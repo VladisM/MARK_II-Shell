@@ -4,7 +4,7 @@
 
 #include <pwrmng.h>
 
-int beep(int argc, char argv[][33]){
+int beep(int argc, char argv[][INBUF_LEN]){
 	#ifndef DEBUG	
 	pwrmng_beep_long();	
 	#else

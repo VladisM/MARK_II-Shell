@@ -2,7 +2,7 @@
 #include "return_codes.h"
 #include "io.h"
 
-int ping(int argc, char argv[][33]){
+int ping(int argc, char argv[][INBUF_LEN]){
 	send_string("pong!\n\r");
 	return RET_OK;
 }

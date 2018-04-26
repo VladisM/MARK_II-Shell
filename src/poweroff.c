@@ -6,7 +6,7 @@
 
 #ifndef DEBUG	
 
-int poweroff(int argc, char argv[][33]){	
+int poweroff(int argc, char argv[][INBUF_LEN]){	
 	send_string("Bye!");
 	pwrmng_power_off();
 	while(1);

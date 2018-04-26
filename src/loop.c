@@ -4,12 +4,17 @@
 #include "cmds.h"
 #include "return_codes.h"
 
+#include <pwrmng.h>
+
+#define INBUF_LEN 81
+#define MAX_ARGS 10
+
 static int get_cmd();
 static int tokenize_cmd();
 int eval_cmd(int argc);
 
-char input_string[33];
-char input_tokens[10][33];
+char input_string[INBUF_LEN];
+char input_tokens[MAX_ARGS][INBUF_LEN];
 
 void shell_init(){
 	io_init();
@@ -80,6 +85,11 @@ static int get_cmd(){
 				pos--;
 				send_string("\b \b");
 			}
+			#ifndef DEBUG			
+			else{
+				pwrmng_beep_short();
+			}
+			#endif
 			continue;
 		}
 		
@@ -87,7 +97,7 @@ static int get_cmd(){
 		if (key != 0x0D) input_string[pos++] = key;
 		
 		//not let input_string[] overflow!
-		if(pos > 31){
+		if(pos > (INBUF_LEN - 1)){
 			send_string("\n\r");
 			input_string[pos] = 0x00;
 			return -1;
@@ -131,7 +141,7 @@ static int tokenize_cmd(){
 		}
 		
 		//check if arg count doesn't exceed
-		if(arg_count > 9){
+		if(arg_count > MAX_ARGS - 1){
 			return -1;
 		}
 		
