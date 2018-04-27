@@ -32,18 +32,17 @@ void vgaio_putc(char c){
 			vgaio_row = ROW_29;
 			vgaio_column = COLUMN_0;
 		}
-		
 	}
 	else if (c == '\r'){
 		vgaio_column = COLUMN_0;
 	}
 	else if (c == 0x08){ //backspace
-		vgaio_row = vgaio_row - 1;
+		vgaio_column = vgaio_column - 1;
 	}
 	else{
 		VRAM0(vgaio_row, vgaio_column) = c | FG_WHITE | BG_BLACK;
 		vgaio_column = vgaio_column + 1;
-	}       
+	}
 } 
 
 void vgaio_write_msg(char *c){
