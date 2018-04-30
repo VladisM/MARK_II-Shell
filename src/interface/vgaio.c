@@ -22,6 +22,7 @@ void vgaio_home(){
 }
 
 void vgaio_putc(char c){
+	VRAM0(vgaio_row, vgaio_column) &= ~(CURSOR);
 	if (c == '\n'){
 		if (vgaio_row < ROW_29) {
 			vgaio_row = vgaio_row + 1;
@@ -32,17 +33,21 @@ void vgaio_putc(char c){
 			vgaio_row = ROW_29;
 			vgaio_column = COLUMN_0;
 		}
+		VRAM0(vgaio_row, vgaio_column) |= CURSOR;
 	}
 	else if (c == '\r'){
 		vgaio_column = COLUMN_0;
+		VRAM0(vgaio_row, vgaio_column) |= CURSOR;
 	}
 	else if (c == 0x08){ //backspace
 		vgaio_column = vgaio_column - 1;
+		VRAM0(vgaio_row, vgaio_column) |= CURSOR;
 	}
 	else{
 		VRAM0(vgaio_row, vgaio_column) = c | FG_WHITE | BG_BLACK;
 		vgaio_column = vgaio_column + 1;
-	}
+		VRAM0(vgaio_row, vgaio_column) = 0x20 | CURSOR | FG_WHITE | BG_BLACK;
+	}	
 } 
 
 void vgaio_write_msg(char *c){
