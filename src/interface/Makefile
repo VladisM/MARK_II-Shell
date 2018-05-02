@@ -10,3 +10,7 @@ all: $(OBJS)
 ../../build/interface/vgaio.o: vgaio.c vgaio.h 
 	$(CC) $(CFLAGS) -o=$(@:.o=.asm) $<
 	$(AS) -o $@ $(@:.o=.asm)
+
+../../build/interface/ps.o: ps.c ps.h
+	$(CC) $(CFLAGS) -o=$(@:.o=.asm) $<
+	$(AS) -o $@ $(@:.o=.asm)

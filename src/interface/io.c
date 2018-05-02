@@ -3,6 +3,7 @@
 
 #ifndef DEBUG
 #include "vgaio.h"
+#include "ps.h"
 #endif
 
 void send_char(char c){
@@ -20,8 +21,24 @@ void send_string(char *c){
 }
 
 char get_char(){
-	while((USR0 & USR0_rxcount) == 0);
-	return (char)URDR0;		
+	while(1){
+		char data = '\0';
+		
+		//try to read char from UART or PS2
+		if((USR0 & USR0_rxcount) > 0){
+			data = URDR0;				
+		}
+		#ifndef DEBUG
+		if(input_buffer_count > 0){
+			data = get_char();
+		}
+		#endif
+		
+		//if something  was readed return it!
+		if(data != '\0'){
+			return data;
+		}
+	}
 }
 	
 void io_init(){

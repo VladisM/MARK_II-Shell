@@ -1,5 +1,7 @@
 #include "vgaio.h"
 
+#ifndef DEBUG
+
 #include <vga.h>
 
 int vgaio_row = ROW_0;
@@ -67,3 +69,5 @@ inline void vgaio_move_lines_up(){
         VRAM0(ROW_29,y) = 0x00 | FG_BLACK | BG_BLACK;
     }
 }
+
+#endif
