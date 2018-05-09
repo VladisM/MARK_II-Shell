@@ -13,6 +13,9 @@ void help_help();
 int beep(int argc, char argv[][INBUF_LEN]);
 void beep_help();
 
+int color(int argc, char argv[][INBUF_LEN]);
+void color_help();
+
 #ifndef DEBUG
 int poweroff(int argc, char argv[][INBUF_LEN]);
 void poweroff_help();

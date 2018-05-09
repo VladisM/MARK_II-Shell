@@ -2,5 +2,6 @@
 #define STRING_H_included
 
 int strcmp(char* s1, char* s2);
+void strcpy(char* s1, char* s2);
 
 #endif

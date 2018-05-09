@@ -27,6 +27,7 @@ char get_char(){
 void io_init(){
 	UCR0 |= ( UCR0_txen | UCR0_rxen | (UCR0_N & 0xEF) );
 	#ifndef DEBUG
+	vgaio_init();
 	vgaio_clear();
 	vgaio_home();
 	#endif	

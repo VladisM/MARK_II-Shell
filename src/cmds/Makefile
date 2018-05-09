@@ -18,3 +18,7 @@ all: $(OBJS)
 ../../build/cmds/help.o: help.c cmds.h ../libs/return_codes.h ../libs/string.h ../interface/io.h
 	$(CC) $(CFLAGS) -o=$(@:.o=.asm) $<
 	$(AS) -o $@ $(@:.o=.asm)
+
+../../build/cmds/color.o: color.c cmds.h ../libs/return_codes.h ../libs/string.h ../interface/io.h ../interface/vgaio.h
+	$(CC) $(CFLAGS) -o=$(@:.o=.asm) $<
+	$(AS) -o $@ $(@:.o=.asm)

@@ -165,6 +165,9 @@ int eval_cmd(int arg_count){
 	else if(strcmp(input_tokens[0], "beep")){
 		return beep(arg_count, input_tokens);
 	}
+	else if(strcmp(input_tokens[0], "color")){
+		return color(arg_count, input_tokens);
+	}
 	#ifndef DEBUG
 	else if(strcmp(input_tokens[0], "poweroff")){
 		return poweroff(arg_count, input_tokens);
