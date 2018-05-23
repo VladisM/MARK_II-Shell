@@ -1,10 +1,10 @@
+#ifndef DEBUG	
+
 #include "cmds.h"
 #include "../libs/return_codes.h"
 #include "../interface/io.h"
 
 #include <pwrmng.h>
-
-#ifndef DEBUG	
 
 int poweroff(int argc, char argv[][INBUF_LEN]){	
 	send_string("Bye!");

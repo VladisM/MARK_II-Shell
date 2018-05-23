@@ -12,8 +12,9 @@ int help(int argc, char argv[][INBUF_LEN]){
 		send_string(" ping      test connection\n\r");
 		send_string(" help      show help\n\r");
 		send_string(" beep      produce sound\n\r");
+		send_string(" color    change interface color\n\r");
 		#ifndef DEBUG
-		send_string(" poweroff  disable power\n\r"); 
+		send_string(" poweroff  disable power\n\r"); 		
 		#endif
 		
 		send_string("\n\rFor info about cmd use:\n\r");
@@ -30,6 +31,10 @@ int help(int argc, char argv[][INBUF_LEN]){
 		}
 		else if(strcmp(argv[1], "beep")){
 			beep_help();
+			return RET_OK;
+		}
+		else if(strcmp(argv[1], "color")){
+			color_help();
 			return RET_OK;
 		}
 		#ifndef DEBUG
