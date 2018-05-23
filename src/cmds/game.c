@@ -2,6 +2,8 @@
 #include "../libs/return_codes.h"
 #include "../interface/io.h"
 
+#include <lfsr.h>
+
 static int rand_number();
 static int atoi(char c);
 static char itoa(int i);
@@ -14,12 +16,12 @@ int game(int argc, char argv[][INBUF_LEN]){
 	
 	number = rand_number();
 	
-	send_string("I have an integer from <0;9>, try to guess it!\n\r");
+	send_string("I have an integer from <0;7>, try to guess it!\n\r");
 	
 	while(1){
 		
-		if(round == 9){
-			send_string("You really tried to guess nine times?! You are such a loser!!!\n\r");
+		if(round == 5){
+			send_string("You really tried to guess five times?! You are such a loser!!!\n\r");
 			goto FAIL;
 		}			
 			
@@ -63,7 +65,9 @@ void game_help(){
 }
 
 static int rand_number(){
-	return 3;
+	int rand = LFSR_RN;	
+	rand &= 0x07;
+	return rand;
 }
 
 static int atoi(char c){
