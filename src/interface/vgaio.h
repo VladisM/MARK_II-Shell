@@ -19,8 +19,8 @@
 #define GRAY 			0xE
 #define WHITE 			0xF
 
-int vgaio_fg_color;
-int vgaio_bg_color;
+extern int vgaio_fg_color;
+extern int vgaio_bg_color;
 
 void vgaio_clear();
 void vgaio_home();

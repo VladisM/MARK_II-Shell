@@ -13,12 +13,14 @@ int vgaio_column;
 inline void vgaio_move_lines_up();
 void set_color(int fg_col, int bg_col);
 
+int vgaio_fg_color;
+int vgaio_bg_color;
 	
 void vgaio_clear(){
     int x, y = 0;
     for(x = ROW_0; x <= ROW_29; x++){
         for(y = COLUMN_0; y <= COLUMN_79; y++){
-            VRAM0(x,y) = 0x00 | (vgaio_bg_color << FG_POS) | (vgaio_bg_color << BG_POS);
+            VRAM0(x,y) = 0x20 | (vgaio_bg_color << FG_POS) | (vgaio_bg_color << BG_POS);
         }
     }
     vgaio_home();
@@ -72,13 +74,22 @@ inline void vgaio_move_lines_up(){
         }
     }
     for(y = COLUMN_0; y <= COLUMN_79; y++){
-        VRAM0(ROW_29,y) = 0x00 | (vgaio_bg_color << FG_POS) | (vgaio_bg_color << BG_POS);
+        VRAM0(ROW_29,y) = 0x20 | (vgaio_bg_color << FG_POS) | (vgaio_bg_color << BG_POS);
     }
 }
 
 void vgaio_set_color(int fg_col, int bg_col){
+	int x, y = 0;
+			
 	vgaio_fg_color = fg_col;
-	vgaio_bg_color = bg_col;		
+	vgaio_bg_color = bg_col;	
+		
+    for(x = ROW_0; x <= ROW_29; x++){
+        for(y = COLUMN_0; y <= COLUMN_79; y++){
+			VRAM0(x,y) &= ~((0xF << FG_POS) | (0xF << BG_POS));
+            VRAM0(x,y) |= (vgaio_fg_color << FG_POS) | (vgaio_bg_color << BG_POS);
+        }
+    }	
 }
 
 void vgaio_init(){
