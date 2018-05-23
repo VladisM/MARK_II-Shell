@@ -5,9 +5,9 @@
 void ps_init();
 
 //get char from input buffer
-char get_char();
+char ps_get_char();
 
 //char cunt in input buffer
-int input_buffer_count;
+extern volatile int input_buffer_count;
 
 #endif

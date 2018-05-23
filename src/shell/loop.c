@@ -80,7 +80,7 @@ static int get_cmd(){
 		key = get_char();
 		
 		//if key is backspace or delete
-		if (key == 0x0B || key == 0x7F){			
+		if (key == '\b' || key == 0x7F){			
 			if(pos > 0){
 				pos--;
 				send_string("\b \b");

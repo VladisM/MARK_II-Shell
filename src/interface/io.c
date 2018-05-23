@@ -30,7 +30,7 @@ char get_char(){
 		}
 		#ifndef DEBUG
 		if(input_buffer_count > 0){
-			data = get_char();
+			data = ps_get_char();
 		}
 		#endif
 		
@@ -46,5 +46,6 @@ void io_init(){
 	#ifndef DEBUG
 	vgaio_clear();
 	vgaio_home();
+	ps_init();
 	#endif	
 }
