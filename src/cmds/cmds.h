@@ -13,6 +13,9 @@ void beep_help();
 int color(int argc, char *argv[]);
 void color_help();
 
+int game(int argc, char *argv[]);
+void game_help();
+
 #ifndef DEBUG
 int poweroff(int argc, char *argv[]);
 void poweroff_help();

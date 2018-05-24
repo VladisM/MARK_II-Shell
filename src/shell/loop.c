@@ -160,7 +160,7 @@ static int tokenize_cmd(){
 
 int eval_cmd(int arg_count){
 	
-	if(strcmp(input_tokens[0], "ping")){
+	if(strcmp(argv[0], "ping")){
 		return ping(arg_count, argv);
 	}
 	else if(strcmp(argv[0], "help")){
@@ -171,6 +171,9 @@ int eval_cmd(int arg_count){
 	}
 	else if(strcmp(argv[0], "color")){
 		return color(arg_count, argv);
+	}
+	else if(strcmp(argv[0], "game")){
+		return game(arg_count, argv);
 	}
 	#ifndef DEBUG
 	else if(strcmp(argv[0], "poweroff")){

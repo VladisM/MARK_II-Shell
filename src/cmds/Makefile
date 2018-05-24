@@ -15,6 +15,10 @@ all: $(OBJS)
 	$(CC) $(CFLAGS) -o=$(@:.o=.asm) $<
 	$(AS) -o $@ $(@:.o=.asm)
 
+../../build/cmds/game.o: game.c cmds.h ../libs/return_codes.h ../interface/io.h
+	$(CC) $(CFLAGS) -o=$(@:.o=.asm) $<
+	$(AS) -o $@ $(@:.o=.asm)
+
 ../../build/cmds/help.o: help.c cmds.h ../libs/return_codes.h ../libs/string.h ../interface/io.h
 	$(CC) $(CFLAGS) -o=$(@:.o=.asm) $<
 	$(AS) -o $@ $(@:.o=.asm)
