@@ -6,7 +6,7 @@
 
 #include <pwrmng.h>
 
-int poweroff(int argc, char argv[][INBUF_LEN]){	
+int poweroff(int argc, char *argv[]){	
 	send_string("Bye!");
 	pwrmng_power_off();
 	while(1);

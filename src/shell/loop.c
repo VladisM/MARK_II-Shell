@@ -15,9 +15,13 @@ int eval_cmd(int argc);
 
 char input_string[INBUF_LEN];
 char input_tokens[MAX_ARGS][INBUF_LEN];
+char *argv[MAX_ARGS];
 
 void shell_init(){
 	io_init();
+	for(int i = 0; i < MAX_ARGS; i++){
+		argv[i] = input_tokens[i];
+	}
 }
 
 void shell_loop(){
@@ -157,20 +161,20 @@ static int tokenize_cmd(){
 int eval_cmd(int arg_count){
 	
 	if(strcmp(input_tokens[0], "ping")){
-		return ping(arg_count, input_tokens);
+		return ping(arg_count, argv);
 	}
-	else if(strcmp(input_tokens[0], "help")){
-		return help(arg_count, input_tokens);
+	else if(strcmp(argv[0], "help")){
+		return help(arg_count, argv);
 	}
-	else if(strcmp(input_tokens[0], "beep")){
-		return beep(arg_count, input_tokens);
+	else if(strcmp(argv[0], "beep")){
+		return beep(arg_count, argv);
 	}
-	else if(strcmp(input_tokens[0], "color")){
-		return color(arg_count, input_tokens);
+	else if(strcmp(argv[0], "color")){
+		return color(arg_count, argv);
 	}
 	#ifndef DEBUG
-	else if(strcmp(input_tokens[0], "poweroff")){
-		return poweroff(arg_count, input_tokens);
+	else if(strcmp(argv[0], "poweroff")){
+		return poweroff(arg_count, argv);
 	}
 	#endif
 	else{

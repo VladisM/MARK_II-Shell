@@ -7,12 +7,12 @@
 #include "../interface/vgaio.h"
 
 static int echo_color();
-static int convert_to_code(char name[INBUF_LEN]);
+static int convert_to_code(char *name);
 static int convert_to_name(int code, char *buffer);
 inline void list_color_names();
 #endif
 
-int color(int argc, char argv[][INBUF_LEN]){    
+int color(int argc, char *argv[]){    
 #ifndef DEBUG
     if(argc == 1){
         return echo_color();
@@ -84,7 +84,7 @@ static int echo_color(){
 }
 
 
-static int convert_to_code(char name[INBUF_LEN]){
+static int convert_to_code(char *name){
     if     (strcmp(name, "black"))     return BLACK;
     else if(strcmp(name, "lgray"))     return LIGHT_GRAY;
     else if(strcmp(name, "red"))       return RED;
