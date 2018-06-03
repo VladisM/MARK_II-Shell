@@ -60,10 +60,15 @@ shell:
 .PHONY: clean emul load
 
 clean:
-	rm -rf build
+	rm -rf build fast_load*
 	
 emul: build/$(PRG).ldm
 	cd sim; sh start.sh
 
 load: build/$(PRG).ldm
 	m2-loader -b 0x800000 -p /dev/ttyUSB0 build/$(PRG).ldm
+	
+fastload: build/$(PRG).ldm
+	m2-loader -b 0x800000 -p /dev/null --fileout build/$(PRG).ldm
+	gcc -o fast_load fast_load.c
+	./fast_load

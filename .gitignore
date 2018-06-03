@@ -1,5 +1,6 @@
 build/
 sim/dev/*
 junk/*
-
+fast_load
+fast_load.c
 !sim/dev/.holder
