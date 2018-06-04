@@ -12,7 +12,7 @@ int help(int argc, char *argv[]){
 		send_string(" ping      test connection\n\r");
 		send_string(" help      show help\n\r");
 		send_string(" beep      produce sound\n\r");
-		send_string(" color    change interface color\n\r");
+		send_string(" color     change interface color\n\r");
 		send_string(" game      play simple game\n\r");
 		#ifndef DEBUG
 		send_string(" poweroff  disable power\n\r"); 		
